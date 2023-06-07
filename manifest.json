@@ -1,0 +1,26 @@
+{
+  "manifest_version": 2,
+  "name": "Unicode URL Blocker",
+  "description": "Block requests which contain Unicode characters",
+  "version": "1.0.0",
+  "permissions": [
+    "<all_urls>",
+    "webRequest",
+    "webRequestBlocking"
+  ],
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "browser_action": {
+    "browser_style": false,
+    "default_title": ""
+  },
+  "applications": {
+    "gecko": {
+      "id": "UnicodeUrlBlocker@Programie",
+      "strict_min_version": "100.0"
+    }
+  }
+}

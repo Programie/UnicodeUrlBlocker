@@ -1,0 +1,34 @@
+{
+  "name": "unicodeurlblocker",
+  "version": "1.0.0",
+  "description": "Block requests which contain Unicode characters",
+  "author": {
+    "name": "Michael Wieland",
+    "email": "dev@selfcoders.com"
+  },
+  "license": "MIT",
+  "homepage": "https://gitlab.com/Programie/UnicodeUrlBlocker#readme",
+  "bugs": {
+    "url": "https://gitlab.com/Programie/UnicodeUrlBlocker"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/Programie/UnicodeUrlBlocker.git"
+  },
+  "devDependencies": {
+    "@types/firefox-webext-browser": "^111.0.1",
+    "web-ext": "^7.6.2"
+  },
+  "scripts": {
+    "build": "web-ext build",
+    "start": "web-ext run"
+  },
+  "webExt": {
+    "build": {
+      "overwriteDest": true
+    }
+  },
+  "volta": {
+    "node": "18.16.0"
+  }
+}
