@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <link rel="stylesheet" href="chrome://global/skin/in-content/info-pages.css"/>
+        <link rel="stylesheet" href="blocked.css"/>
+        <script type="text/javascript" src="blocked.js"></script>
+    </head>
+
+    <body>
+        <main class="container">
+            <div class="title">
+                <h2>Unicode URL Blocker</h2>
+                <h1 class="title-text">Non-standard characters in URL</h1>
+            </div>
+            <p>You are trying to reach a website which might try to trick you to be another site.</p>
+            <p>This is usually done by using similar looking characters like the division sign instead of the slash.</p>
+            <p>The website you are trying to reach uses <b class="blocked-domain"></b> as it's domain name.</p>
+            <p id="blocked-url-container">URL: <b id="blocked-url"></b></p>
+            <div class="button-container">
+                <button id="goto-blocked-url">Continue to the <span class="blocked-domain"></span></button>
+                <button id="go-back" class="primary">Go back</button>
+            </div>
+        </main>
+    </body>
+</html>

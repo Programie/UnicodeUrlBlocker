@@ -5,6 +5,7 @@
   "version": "1.0.0",
   "permissions": [
     "<all_urls>",
+    "storage",
     "webRequest",
     "webRequestBlocking"
   ],
@@ -12,10 +13,6 @@
     "scripts": [
       "background.js"
     ]
-  },
-  "browser_action": {
-    "browser_style": false,
-    "default_title": ""
   },
   "applications": {
     "gecko": {

@@ -1,5 +1,21 @@
+let allowedDomains = new Set();
+
+function updateAllowedDomains() {
+    browser.storage.local.get("allowedDomains").then((storageResult) => {
+        allowedDomains = new Set(storageResult.allowedDomains || []);
+    });
+}
+
+function isFirefox() {
+    return navigator.userAgent.toLowerCase().indexOf("firefox") > -1;
+}
+
 function isBadUrl(url) {
     let parsedUrl = new URL(url);
+
+    if (allowedDomains.has(parsedUrl.hostname)) {
+        return false;
+    }
 
     // Remove path, query string and fragment, so they are not checked for bad characters
     parsedUrl.pathname = "";
@@ -21,24 +37,34 @@ function isBadUrl(url) {
     return false;
 }
 
-function onBeforeRequest(requestDetails) {
-    let url = requestDetails.url;
-
-    if (isBadUrl(url)) {
-        browser.browserAction.setBadgeBackgroundColor({"color": "red"});
-        browser.browserAction.setBadgeText({text: "BLK"});
-        browser.browserAction.setTitle({title: `Request Blocked: ${url}`});
-        console.log(`Request Blocked: ${url}`);
+function redirectToUrl(tabId, url) {
+    if (isFirefox()) {
+        // Workaround for Firefox as we can't use redirectUrl to redirect to a moz-extension URL
+        browser.tabs.update(tabId, {
+            url: url
+        });
 
         return {
             cancel: true
         };
+    } else {
+        return {url};
     }
-
-    browser.browserAction.setBadgeBackgroundColor({"color": "green"});
-    browser.browserAction.setBadgeText({text: ""});
-    browser.browserAction.setTitle({title: ""});
 }
+
+function onBeforeRequest(requestDetails) {
+    let url = requestDetails.url;
+
+    if (isBadUrl(url)) {
+        let redirectUrl = new URL(browser.runtime.getURL("blocked.html"));
+        redirectUrl.searchParams.set("url", url);
+
+        return redirectToUrl(requestDetails.tabId, redirectUrl.toString());
+    }
+}
+
+updateAllowedDomains();
+browser.storage.onChanged.addListener(updateAllowedDomains);
 
 browser.webRequest.onBeforeRequest.addListener(
     onBeforeRequest,
