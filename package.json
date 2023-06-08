@@ -15,15 +15,23 @@
     "type": "git",
     "url": "git+ssh://git@gitlab.com/Programie/UnicodeUrlBlocker.git"
   },
+  "dependencies": {
+    "webextension-polyfill": "^0.10.0"
+  },
   "devDependencies": {
-    "@types/firefox-webext-browser": "^111.0.1",
-    "web-ext": "^7.6.2"
+    "copy-webpack-plugin": "^11.0.0",
+    "web-ext": "^7.6.2",
+    "webpack": "^5.86.0",
+    "webpack-cli": "^5.1.4",
+    "webpack-target-webextension": "^1.0.5"
   },
   "scripts": {
-    "build": "web-ext build",
-    "start": "web-ext run"
+    "build": "webpack && web-ext build",
+    "start": "webpack && web-ext run",
+    "start-chrome": "webpack && web-ext run --target chromium"
   },
   "webExt": {
+    "sourceDir": "dist/",
     "build": {
       "overwriteDest": true
     }

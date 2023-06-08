@@ -1,3 +1,5 @@
+import * as browser from "webextension-polyfill";
+
 let allowedDomains = new Set();
 
 function updateAllowedDomains() {
@@ -48,7 +50,9 @@ function redirectToUrl(tabId, url) {
             cancel: true
         };
     } else {
-        return {url};
+        return {
+            redirectUrl: url
+        };
     }
 }
 

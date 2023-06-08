@@ -1,3 +1,5 @@
+import * as browser from "webextension-polyfill";
+
 document.addEventListener("DOMContentLoaded", () => {
     let blockedUrl = new URL(new URL(document.location).searchParams.get("url"));
 
