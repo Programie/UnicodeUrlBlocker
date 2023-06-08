@@ -1,10 +1,11 @@
 const path = require("path");
 const CopyPlugin = require("copy-webpack-plugin");
+const packageJson = require("./package.json");
 
 module.exports = {
     entry: {
         background: "./src/background.js",
-        blocked: "./src/blocked.js"
+        "block-page/script": "./src/block-page/script.js"
     },
     mode: "production",
     resolve: {
@@ -19,7 +20,23 @@ module.exports = {
         new CopyPlugin({
             patterns: [
                 {
-                    from: "static"
+                    from: "**/*",
+                    context: "src/",
+                    globOptions: {
+                        ignore: ["**/*.js"]
+                    }
+                },
+                {
+                    from: "manifest.json",
+                    to: "manifest.json",
+                    transform: (content) => {
+                        let manifestJson = JSON.parse(content);
+
+                        manifestJson.description = packageJson.description;
+                        manifestJson.version = packageJson.version;
+
+                        return JSON.stringify(manifestJson, null, 2);
+                    }
                 }
             ],
         }),

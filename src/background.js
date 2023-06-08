@@ -60,7 +60,7 @@ function onBeforeRequest(requestDetails) {
     let url = requestDetails.url;
 
     if (isBadUrl(url)) {
-        let redirectUrl = new URL(browser.runtime.getURL("blocked.html"));
+        let redirectUrl = new URL(browser.runtime.getURL("block-page/index.html"));
         redirectUrl.searchParams.set("url", url);
 
         return redirectToUrl(requestDetails.tabId, redirectUrl.toString());

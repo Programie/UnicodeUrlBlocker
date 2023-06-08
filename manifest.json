@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
   "name": "Unicode URL Blocker",
-  "description": "Block requests which contain Unicode characters",
-  "version": "1.0.0",
+  "description": null,
+  "version": null,
   "permissions": [
     "<all_urls>",
     "storage",
