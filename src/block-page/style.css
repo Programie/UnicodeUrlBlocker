@@ -44,9 +44,9 @@ button {
 }
 
 button.primary {
-    background-color: #0d6dfb;
+    background-color: #0d6efd;
 }
 
 button.danger {
-    background-color: #da3544;
+    background-color: #dc3545;
 }
