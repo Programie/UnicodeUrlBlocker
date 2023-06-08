@@ -7,9 +7,9 @@
     "email": "dev@selfcoders.com"
   },
   "license": "MIT",
-  "homepage": "https://gitlab.com/Programie/UnicodeUrlBlocker#readme",
+  "homepage": "https://gitlab.com/Programie/UnicodeUrlBlocker",
   "bugs": {
-    "url": "https://gitlab.com/Programie/UnicodeUrlBlocker"
+    "url": "https://gitlab.com/Programie/UnicodeUrlBlocker/-/issues"
   },
   "repository": {
     "type": "git",
