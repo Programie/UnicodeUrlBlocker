@@ -7,13 +7,13 @@
     "email": "dev@selfcoders.com"
   },
   "license": "MIT",
-  "homepage": "https://gitlab.com/Programie/UnicodeUrlBlocker",
+  "homepage": "https://github.com/Programie/UnicodeUrlBlocker#readme",
   "bugs": {
-    "url": "https://gitlab.com/Programie/UnicodeUrlBlocker/-/issues"
+    "url": "https://github.com/Programie/UnicodeUrlBlocker/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@gitlab.com/Programie/UnicodeUrlBlocker.git"
+    "url": "git+ssh://git@github.com/Programie/UnicodeUrlBlocker.git"
   },
   "dependencies": {
     "webextension-polyfill": "^0.10.0"
